@@ -6,6 +6,17 @@
         <Nullable>enable</Nullable>
         <AssemblyName>Cola.ColaGrpc</AssemblyName>
         <RootNamespace>Cola.ColaGrpc</RootNamespace>
+        <Version>1.0.2</Version>
+        <Title>Cola.ColaGrpc</Title>
+        <Authors>OdinSam</Authors>
+        <Description>Cola.ColaGrpc组件</Description>
+        <PackageProjectUrl>https://github.com/odinGitGmail/Cola.ColaGrpc</PackageProjectUrl>
+        <PackageIcon>icon.png</PackageIcon>
+        <RepositoryUrl>https://github.com/odinGitGmail/Cola.ColaGrpc</RepositoryUrl>
+        <PackageTags>Cola.ColaGrpc;grpc;cola</PackageTags>
+        <AssemblyVersion>1.0.2</AssemblyVersion>
+        <FileVersion>1.0.2</FileVersion>
+        <Copyright>copyRight © 2023 OdinSam</Copyright>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,5 +29,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Cola.Core\Cola.Core.csproj" />
     </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="dotnet restore" />
+    </Target>
 
 </Project>
