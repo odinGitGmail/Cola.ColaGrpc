@@ -1,4 +1,4 @@
-﻿using Cola.Core.Utils.Helper;
+﻿using Cola.CoreUtils.Helper;
 using Grpc.Core;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Configuration;
