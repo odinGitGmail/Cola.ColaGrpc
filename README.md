@@ -1,5 +1,7 @@
 #### Cola.ColaGrpc 框架
 
+[![Version](https://flat.badgen.net/nuget/v/Cola.ColaGrpc?label=version)](https://github.com/odinGitGmail/Cola.ColaGrpc) [![download](https://flat.badgen.net/nuget/dt/Cola.ColaGrpc)](https://www.nuget.org/packages/Cola.ColaGrpc) [![commit](https://flat.badgen.net/github/last-commit/odinGitGmail/Cola.ColaGrpc)](https://flat.badgen.net/github/last-commit/odinGitGmail/Cola.ColaGrpc) [![Blog](https://flat.badgen.net/static/blog/odinsam.com)](https://odinsam.com)
+
 ##### 1. 注入
 
 注入可以通过代码直接注入
