@@ -25,7 +25,7 @@ public static class ColaGrpcInject
         IConfiguration config)
     {
         var grpcServerOption = config.GetSection(SystemConstant.CONSTANT_COLAGRPCSERVER_SECTION).Get<GrpcServerOption>();
-        grpcServerOption = grpcServerOption ?? new GrpcServerOption();
+        grpcServerOption ??= new GrpcServerOption();
         return InjectGrpcServerGlobal(services, config, grpcServerOption);
     }
     
