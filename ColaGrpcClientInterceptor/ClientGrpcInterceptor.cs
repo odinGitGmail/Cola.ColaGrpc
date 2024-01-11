@@ -1,6 +1,7 @@
 ﻿using Cola.Core.ColaLog;
 using Cola.Core.Models.ColaGrpc;
 using Cola.Core.Utils.Constants;
+using Cola.CoreUtils.Extensions;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Configuration;
@@ -163,7 +164,7 @@ public class ClientGrpcInterceptor : Interceptor
     /// <typeparam name="TResponse"></typeparam>
     private void ClientInterceptorLog<TRequest, TResponse>(string logInfo,ClientInterceptorContext<TRequest, TResponse> context) where TRequest:class where TResponse:class
     {
-        var interceptorLog = _config.GetSection(SystemConstant.CONSTANT_COLAGRPCCLIENT_SECTION).Get<GrpcClientOption>()
+        var interceptorLog = _config.GetColaSection<GrpcClientOption>(SystemConstant.CONSTANT_COLAGRPCCLIENT_SECTION)
             .InterceptorLog;
         if (interceptorLog)
         {

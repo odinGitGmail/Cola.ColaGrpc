@@ -3,6 +3,7 @@ using Cola.Core.ColaConsole;
 using Cola.Core.ColaLog;
 using Cola.Core.Models.ColaGrpc;
 using Cola.Core.Utils.Constants;
+using Cola.CoreUtils.Extensions;
 using Grpc.AspNetCore.Server;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
@@ -24,7 +25,7 @@ public static class ColaGrpcInject
         this IServiceCollection services,
         IConfiguration config)
     {
-        var grpcServerOption = config.GetSection(SystemConstant.CONSTANT_COLAGRPCSERVER_SECTION).Get<GrpcServerOption>();
+        var grpcServerOption = config.GetColaSection<GrpcServerOption>(SystemConstant.CONSTANT_COLAGRPCSERVER_SECTION);
         grpcServerOption ??= new GrpcServerOption();
         return InjectGrpcServerGlobal(services, config, grpcServerOption);
     }
@@ -39,7 +40,7 @@ public static class ColaGrpcInject
     public static IGrpcServerBuilder AddColaSingleServerGrpc<TService>(this IGrpcServerBuilder serverBuilder, IConfiguration config) where TService : class
     {
         var serverName = typeof(TService).Name;
-        var serverOption = config.GetSection($"{SystemConstant.CONSTANT_COLAGRPCSERVER_SECTION}:{serverName}").Get<GrpcServerOption>();
+        var serverOption = config.GetColaSection<GrpcServerOption>($"{SystemConstant.CONSTANT_COLAGRPCSERVER_SECTION}:{serverName}");
         return serverBuilder.AddServiceOptions<TService>(options =>
         {
             options.EnableDetailedErrors = serverOption.EnableDetailedErrors;
@@ -60,7 +61,7 @@ public static class ColaGrpcInject
     public static IGrpcServerBuilder AddColaSingleServerGrpc<TService,TSingleInterceptor>(this IGrpcServerBuilder serverBuilder, IConfiguration config) where TService : class where TSingleInterceptor: Interceptor
     {
         var serverName = typeof(TService).Name;
-        var serverOption = config.GetSection($"{SystemConstant.CONSTANT_COLAGRPCSERVER_SECTION}:{serverName}").Get<GrpcServerOption>();
+        var serverOption = config.GetColaSection<GrpcServerOption>($"{SystemConstant.CONSTANT_COLAGRPCSERVER_SECTION}:{serverName}");
         return serverBuilder.AddServiceOptions<TService>(options =>
         {
             options.EnableDetailedErrors = serverOption.EnableDetailedErrors;
@@ -115,7 +116,7 @@ public static class ColaGrpcInject
 
     public static GrpcChannelOptions CreateGrpcClientChannelOptions(this GrpcChannelOptions options, IConfiguration config, CallCredentials? credentials=null)
     {
-        var clientOption = config.GetSection(SystemConstant.CONSTANT_COLAGRPCCLIENT_SECTION).Get<GrpcClientOption>();
+        var clientOption = config.GetColaSection<GrpcClientOption>(SystemConstant.CONSTANT_COLAGRPCCLIENT_SECTION);
         options.DisposeHttpClient = clientOption.DisposeHttpClient;
         options.MaxSendMessageSize = clientOption.MaxSendMessageSize!=null?clientOption.MaxSendMessageSize * 1024*1024:clientOption.MaxSendMessageSize;
         options.MaxReceiveMessageSize = clientOption.MaxReceiveMessageSize!=null?clientOption.MaxReceiveMessageSize * 1024*1024:clientOption.MaxReceiveMessageSize;
