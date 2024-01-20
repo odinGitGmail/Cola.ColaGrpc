@@ -2,7 +2,7 @@
 using Cola.Core.ColaConsole;
 using Cola.Core.ColaLog;
 using Cola.Core.Models.ColaGrpc;
-using Cola.Core.Utils.Constants;
+using Cola.CoreUtils.Constants;
 using Cola.CoreUtils.Extensions;
 using Grpc.AspNetCore.Server;
 using Grpc.Core;

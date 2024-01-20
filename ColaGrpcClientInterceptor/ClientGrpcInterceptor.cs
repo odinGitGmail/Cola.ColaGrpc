@@ -1,6 +1,6 @@
 ﻿using Cola.Core.ColaLog;
 using Cola.Core.Models.ColaGrpc;
-using Cola.Core.Utils.Constants;
+using Cola.CoreUtils.Constants;
 using Cola.CoreUtils.Extensions;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
